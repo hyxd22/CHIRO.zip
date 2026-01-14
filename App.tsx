@@ -55,10 +55,15 @@ const WorkCard: React.FC<{ work: WorkItem; onClick: () => void }> = ({ work, onC
           />
         ) : (
           <img 
-            src={displayMedia} 
-            alt={work.brand} 
-            className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
-            onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800?text=Image+Load+Failed'; }}
+<img 
+  src={src} 
+  alt={`Work ${index}`} 
+  className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105 group-hover:opacity-100"
+  onError={(e) => { (e.currentTarget.style.display = 'none'); }}
+/>
+
+/>
+
           />
         )
       ) : (
@@ -294,24 +299,26 @@ const App: React.FC = () => {
         {currentPage === Page.MAIN && (
           <section className="fade-up text-center overflow-x-hidden bg-black relative">
             {/* Hero Section with Atmosphere - Deep Navy Twilight Sky */}
-            <div className="relative pt-32 lg:pt-40 pb-20 lg:pb-32 px-6 sm:px-12 lg:px-24">
+<div className="relative pt-24 lg:pt-40 pb-16 lg:pb-32 px-5 sm:px-12 lg:px-24">
               <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
-                <img 
-                  src="https://images.unsplash.com/photo-1516339901600-2e3a82dc50d4?q=80&w=2070&auto=format&fit=crop" 
-                  className="w-full h-full object-cover opacity-20 scale-105" 
-                  alt=""
-                />
-                {/* Clean gradient mask to blend with deep black section */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black" />
-              </div>
+  {/* Solid black background only */}
+  <div className="absolute inset-0 bg-black" />
+</div>
+
 
               <div className="max-w-6xl mx-auto space-y-16 lg:space-y-24 relative z-10">
                 <div className="space-y-10 lg:space-y-16">
-                  <h2 style={getStyle(siteInfo.heroHeadlineStyle, true)} className="tracking-tighter mx-auto text-white">
+<h2
+  style={getStyle(siteInfo.heroHeadlineStyle, true)}
+  className="tracking-tighter mx-auto text-white max-w-[18ch] sm:max-w-none leading-[1.05] px-1"
+>
                     <StyledText text={siteInfo.heroHeadline} pointColor={siteInfo.pointColor} />
                   </h2>
                   <div className="h-px w-24 mx-auto bg-white/10"></div>
-                  <p style={getStyle(siteInfo.heroSubheadlineStyle, true)} className="max-w-3xl mx-auto">
+<p
+  style={getStyle(siteInfo.heroSubheadlineStyle, true)}
+  className="max-w-[36ch] sm:max-w-3xl mx-auto text-white/70 px-2"
+>
                     <StyledText text={siteInfo.heroSubheadline} pointColor={siteInfo.pointColor} />
                   </p>
                 </div>
@@ -347,8 +354,21 @@ const App: React.FC = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {siteInfo.designProcessSteps.map((step, idx) => (
-                  <div key={idx} className="relative group p-10 bg-[#0a0a0a] border border-white/5 rounded-[2rem] text-left space-y-6 hover:shadow-2xl transition-all duration-500 shadow-xl hover:border-white/10">
-                    <div className="absolute -top-4 -left-4 w-12 h-12 bg-white text-black rounded-full flex items-center justify-center font-black text-sm shadow-xl z-10 transition-transform group-hover:scale-110">
+                  <div
+  key={idx}
+  className="
+    relative group
+    p-6 sm:p-8 lg:p-10
+    bg-[#0a0a0a]
+    border border-white/5
+    rounded-[1.5rem] lg:rounded-[2rem]
+    text-left space-y-4 lg:space-y-6
+    hover:shadow-2xl transition-all duration-500
+    shadow-xl hover:border-white/10
+  "
+>
+
+                    <div className="absolute -top-3 -left-3 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center font-black text-sm shadow-xl z-10 transition-transform group-hover:scale-110">
                       0{idx + 1}
                     </div>
                     <h4 style={getStyle(siteInfo.designProcessStepTitleStyle)} className="tracking-tight pt-2 text-white">{step.title}</h4>
@@ -367,7 +387,7 @@ const App: React.FC = () => {
                   </span>
                   <div className="w-24 h-px bg-white/10"></div>
                </div>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12">
                   {works.map((work) => (
                     <WorkCard key={work.id} work={work} onClick={() => navigate(Page.WORK_DETAIL, work.id)} />
                   ))}
