@@ -56,10 +56,12 @@ const WorkCard: React.FC<{ work: WorkItem; onClick: () => void }> = ({ work, onC
         ) : (
           <img 
 <img 
-  src={src} 
-  alt={`Work ${index}`} 
-  className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105 group-hover:opacity-100"
+  src={displayMedia} 
+  alt={work.brand} 
+  className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
   onError={(e) => { (e.currentTarget.style.display = 'none'); }}
+/>
+
 />
 
 />
