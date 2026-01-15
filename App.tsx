@@ -377,7 +377,7 @@ const App: React.FC = () => {
 
         {currentPage === Page.MAIN && (
           <section className="fade-up text-center overflow-x-hidden bg-black relative">
-            <div className="relative pt-24 lg:pt-40 pb-16 lg:pb-32 px-5 sm:px-12 lg:px-24">
+            <div className="relative pt-32 sm:pt-28 lg:pt-40 pb-16 lg:pb-32 px-5 sm:px-12 lg:px-24">
               <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
                 <div className="absolute inset-0 bg-black" />
               </div>
@@ -419,7 +419,7 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] bg-white py-20 lg:py-32 border-y border-black/5 z-10">
+            <div className="w-full sm:w-screen relative sm:left-1/2 sm:right-1/2 sm:-ml-[50vw] bg-white py-16 sm:py-20 lg:py-32 border-y border-black/5 z-10">
               <div className="max-w-6xl mx-auto px-6 sm:px-12 lg:px-24">
                 <p
                   style={{ ...getStyle(siteInfo.mainIntroTextStyle, true), color: '#000000' }}
@@ -437,13 +437,14 @@ const App: React.FC = () => {
                 </h3>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 px-5 sm:px-0">
+
                 {siteInfo.designProcessSteps.map((step, idx) => (
                   <div
                     key={idx}
                     className="relative group p-6 sm:p-8 lg:p-10 bg-[#0a0a0a] border border-white/5 rounded-[1.5rem] lg:rounded-[2rem] text-left space-y-4 lg:space-y-6 hover:shadow-2xl transition-all duration-500 shadow-xl hover:border-white/10"
                   >
-                    <div className="absolute -top-3 -left-3 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center font-black text-sm shadow-xl z-10 transition-transform group-hover:scale-110">
+                    <div className="absolute -top-3 left-3 sm:-left-3 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center font-black text-sm shadow-xl z-10 transition-transform group-hover:scale-110">
                       0{idx + 1}
                     </div>
                     <h4 style={getStyle(siteInfo.designProcessStepTitleStyle)} className="tracking-tight pt-2 text-white">
@@ -458,9 +459,10 @@ const App: React.FC = () => {
             </div>
 
             <div
-              ref={workSectionRef}
-              className="max-w-7xl mx-auto space-y-12 lg:space-y-20 pt-12 lg:pt-20 pb-20 lg:pb-32 bg-black relative z-10"
-            >
+  ref={workSectionRef}
+  className="max-w-7xl mx-auto space-y-12 lg:space-y-20 pt-12 lg:pt-20 pb-20 lg:pb-32 bg-black relative z-10 px-5 sm:px-12 lg:px-0"
+>
+
               <div className="flex flex-col items-center gap-4">
                 <span style={getStyle(siteInfo.worksGalleryTitleStyle)} className="uppercase tracking-[0.4em] font-black">
                   <StyledText text={siteInfo.worksGalleryTitle} pointColor={siteInfo.pointColor} />
